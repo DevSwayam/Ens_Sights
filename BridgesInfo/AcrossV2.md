@@ -1,6 +1,6 @@
 # Bridge Views
 
-## Safe Bridge GraphQL Queries for Calculating Time taken from one chain to another chain transactions
+## Safe Bridge GraphQL Queries for Calculating Time taken from one chain to another chain transactions.
 
 ### Across V2:
 
@@ -8,12 +8,12 @@
 
 **Sample Queries:**
 
-1. **Subgraph Query from Across V2 Boba:**
-   - Link: [across-v2-boba](https://thegraph.com/hosted-service/subgraph/messari/across-v2-boba)
+1. **Subgraph Query from Across V2 Ethereum:**
+   - Link: [across-v2-Ethereum](https://thegraph.com/hosted-service/subgraph/messari/across-v2-ethereum)
 
     ```graphql
     {
-      bridgeTransfers(where: {toChainID: "42161"}) {
+      bridgeTransfers(where: {toChainID: "42161"}, first: 1) {
         fromChainID
         toChainID
         timestamp
@@ -30,7 +30,10 @@
 
     ```graphql
     query MyQuery {
-      bridgeTransfers(where: {fromChainID: "288", transferTo: "0xf6c0a0e00ea37610a044690cdf071d80d15678b1"}) {
+      bridgeTransfers(
+        where: {fromChainID: "1", transferTo: "0xfd7fef26529ad740a4b8193b2035fbb479b9ac5e"}
+        first: 1
+      ) {
         timestamp
         toChainID
         fromChainID
@@ -52,7 +55,7 @@
 
     ```graphql
     {
-      bridgeTransfers(where: {toChainID: "288"}) {
+      bridgeTransfers(where: {toChainID: "1"}, first: 1) {
         fromChainID
         toChainID
         timestamp
@@ -64,12 +67,15 @@
 
     You will receive some addresses from the response fields (TransferFrom, TransferTo). Copy and paste those addresses into the following query input.
 
-2. **Subgraph Query from Across V2 Boba:**
-    - Link: [across-v2-boba](https://thegraph.com/hosted-service/subgraph/messari/across-v2-boba)
+2. **Subgraph Query from Across V2 Ethereum:**
+    - Link: [across-v2-Ethereum](https://thegraph.com/hosted-service/subgraph/messari/across-v2-ethereum)
 
     ```graphql
     query MyQuery {
-      bridgeTransfers(where: {fromChainID: "42161", transferTo: "0x1a74d0285a569120aa2836cb2b0fa58038adb800"}) {
+      bridgeTransfers(
+        where: {fromChainID: "42161", transferTo: "0xfb104c4d1d1cfb1a13095c1765c8d4a0e0b8f35b"}
+        first: 1
+      ) {
         timestamp
         toChainID
         fromChainID
